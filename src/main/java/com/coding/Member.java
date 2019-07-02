@@ -10,15 +10,20 @@ import java.util.Map;
  * @Modify:
  */
 public class Member {
-    public static Map<Integer,Integer> map = new HashMap<>();
-    {
+    public static Map<Integer, Integer> map = new HashMap<>();
+
+    static {
         map.put(30, 60);
         map.put(50, 100);
         map.put(20, 40);
     }
-    private  int points;
+
+    private int points;
 
     public void recharge(int money) {
+        if (null == map.get(money)) {
+            throw new IllegalArgumentException("充值金额应为20，30,或50");
+        }
         points += map.get(money);
 
     }
